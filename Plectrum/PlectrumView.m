@@ -19,31 +19,25 @@
 }
 
 
--(void) drawPlectrumOfPerentage:(CGFloat) percentage color:(UIColor *)color
+-(void) drawPlectrumWithPercentage:(CGFloat) percentage color:(UIColor *)color
 {
     
+    
     CGFloat factor = self.frame.size.width ;
-    CGFloat widthOfCircle = percentage;
-    CGFloat widthOfRectangle = percentage /2;
-    
-    CGRect rectangleFrame = {0, factor - widthOfRectangle*factor, widthOfRectangle*factor, widthOfRectangle*factor };
-    CGRect circleFrame = {0, factor - widthOfCircle*factor, percentage*factor, percentage*factor};
-    
+    percentage*=factor;
+    UIBezierPath* plectrum = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0, factor - percentage, percentage,percentage)
+                                                   byRoundingCorners: UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomRight
+                                                         cornerRadii: CGSizeMake(percentage/2, percentage/2)];
     [color setFill];
-    UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: rectangleFrame];
-    [rectanglePath fill];
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: circleFrame];
-    [ovalPath fill];
-    
-    
+    [plectrum fill];
 }
 
 
 - (void)drawRect:(CGRect)rect
 {
-    [self drawPlectrumOfPerentage:1.0 color: [UIColor colorWithWhite:.9 alpha:1]];
-    [self drawPlectrumOfPerentage:.75 color:[UIColor colorWithRed:245.0/255.0 green:134.0/255.0 blue:122.0/255.0 alpha:1]];
-    [self drawPlectrumOfPerentage:.61 color:[UIColor colorWithRed:171.0/255.0 green:212.0/255.0 blue:105.0/255.0 alpha:1]];
+    [self drawPlectrumWithPercentage:1.0 color: [UIColor colorWithWhite:.9 alpha:1]];
+    [self drawPlectrumWithPercentage:.75 color:[UIColor colorWithRed:245.0/255.0 green:134.0/255.0 blue:122.0/255.0 alpha:1]];
+    [self drawPlectrumWithPercentage:.61 color:[UIColor colorWithRed:171.0/255.0 green:212.0/255.0 blue:105.0/255.0 alpha:1]];
 }
 
 @end
