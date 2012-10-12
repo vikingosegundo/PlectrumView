@@ -37,10 +37,9 @@
 					<object class="IBUIView" id="709292070">
 						<reference key="NSNextResponder" ref="946795362"/>
 						<int key="NSvFlags">301</int>
-						<string key="NSFrame">{{80, 41}, {160, 160}}</string>
+						<string key="NSFrame">{{80, 41}, {100, 100}}</string>
 						<reference key="NSSuperview" ref="946795362"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
