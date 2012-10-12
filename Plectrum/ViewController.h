@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlectrumView.h"
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet PlectrumView *plectrumView;
 
 @end

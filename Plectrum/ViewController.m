@@ -19,7 +19,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        CGRect r = self.plectrumView.frame;
+        self.plectrumView.frame = CGRectMake(r.origin.x, r.origin.y,
+                                             r.size.width*2, r.size.height*2);
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -28,4 +33,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setPlectrumView:nil];
+    [super viewDidUnload];
+}
 @end
