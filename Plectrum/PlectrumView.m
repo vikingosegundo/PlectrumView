@@ -21,15 +21,17 @@
 
 -(void) drawPlectrumWithPercentage:(CGFloat) percentage color:(UIColor *)color
 {
-    static CGFloat pi = 3.141592653589793;
-    static CGFloat radius100percent = 50.0;
+    static const CGFloat pi = 3.141592653589793;
+    static const CGFloat radius100percentSquared = 2500.0;
     
     static CGFloat area100percent;
+    static CGFloat threeFouthPi;
     static CGFloat threeFouthPiPlusOne;
-    area100percent= radius100percent * radius100percent * pi *3/4 + radius100percent*radius100percent;
-    threeFouthPiPlusOne = (1 + (pi*(3.0/4.0)));
-    CGFloat area = area100percent * percentage;
+    threeFouthPi = pi*(3.0/4.0);
+    threeFouthPiPlusOne = 1 + threeFouthPi;
 
+    area100percent= radius100percentSquared * threeFouthPi + radius100percentSquared;
+    CGFloat area = area100percent * percentage;
     CGFloat newRadius = sqrt(area / threeFouthPiPlusOne);
     percentage = newRadius/ 50.0;
     CGFloat factor = self.frame.size.width ;
@@ -45,8 +47,8 @@
 - (void)drawRect:(CGRect)rect
 {
     [self drawPlectrumWithPercentage:1.0 color: [UIColor colorWithWhite:.9 alpha:1]];
-    [self drawPlectrumWithPercentage:.55 color:[UIColor colorWithRed:245.0/255.0 green:134.0/255.0 blue:122.0/255.0 alpha:1]];
-    [self drawPlectrumWithPercentage:.45 color:[UIColor colorWithRed:171.0/255.0 green:212.0/255.0 blue:105.0/255.0 alpha:1]];
+    [self drawPlectrumWithPercentage:.75 color:[UIColor colorWithRed:245.0/255.0 green:134.0/255.0 blue:122.0/255.0 alpha:1]];
+    [self drawPlectrumWithPercentage:.61 color:[UIColor colorWithRed:171.0/255.0 green:212.0/255.0 blue:105.0/255.0 alpha:1]];
 }
 
 @end
